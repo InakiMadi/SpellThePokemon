@@ -1,0 +1,46 @@
+<!doctype html>
+  <html>
+      <head>
+          <meta charset="UTF-8" />
+          <link rel="stylesheet" href="style.css"/>
+          <title>Spell the Pokémon!</title>
+      </head>
+      <body>
+          <h1>
+              <div class="cent_imgs">
+                <a href="http://www.twitter.com/SpeedrunEspanol">
+                  <img src="https://cdn.discordapp.com/attachments/459106062906163206/767847345168842762/Twitter.png" width="47" height="47"/>
+                </a>
+                <a href="http://www.twitch.tv/SpeedrunsEspanol">
+                  <img src="https://cdn.discordapp.com/attachments/459106062906163206/767847335295451156/Twitch.png" width="50" height="50"/>
+                </a>
+              </div>
+
+
+              <div class="correctWrong">
+                <div class="correct">
+                  <span id="howManyCorrect">Correct: 0</span>
+                </div>
+                ---
+                <div class="false">
+                  <span id="howManyWrong">Mistakes: 0</span>
+                </div>
+              </div>
+              Say, who is this Pokémon?
+          </h1>
+          
+          <div id="app"></div>
+          <div class="textBox">
+            <input type = "text",
+                    id = "userPokeName",
+                    placeholder="Pokémon name...",
+                    onkeypress="KeyPressed(event)" />
+            <input type="button" value="Enter" id="enterButton"></input>
+          </div>
+          <div id="enter"></div>
+          <div id="hint"></div>
+          <div id="gallery"></div>
+      </body>
+      <script src="dist/app.js"></script>
+      <script src="dist/enter.js"></script>
+  </html>

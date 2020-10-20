@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    /*
+        background-image: url('https://mcdn.wallpapersafari.com/medium/75/38/8EHGkS.jpg');
+        background-size: 100%;
+        background-repeat:repeat-y;
+        background-position: left top;
+        position:relative;
+        margin:0;
+    */
+    background: rgb(49, 26, 1);
+    /*background: rgb(2, 47, 68);*/
+    line-height: 1.5;
+    font-family: "Impact";
+    color: #e67e00;
+}
+body > h1 {
+    align-items: center;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 35pt;
+}
+
+
+.loading_text {
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-family: "Impact", cursive;
+}
+
+.correct{
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-family: "Impact", cursive;
+    font-size: 30pt;
+    color: rgba(5, 116, 5, 0.74);
+    padding:0px;
+}
+.false{
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-family: "Impact", cursive;
+    font-size: 30pt;
+    color: rgba(155, 10, 10, 0.801);
+    padding:0px;
+}
+.hint{
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-family: "Impact", cursive;
+    font-size: 30pt;
+    color: rgba(187, 83, 14, 0.897);
+    padding:0px;
+}
+
+
+.cent_imgs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.cent_imgs > *{
+  padding:10px;
+}
+.cent_imgs img:hover{
+  transform: scale(1.8);
+}
+
+
+#app{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card {
+    display:flex;
+    justify-content: center;
+    width: 10cm;
+    background: rgb(68, 68, 68);
+    color: #e4c439;
+    padding: 1rem;
+    border-radius: 30px;
+    border-top: 2px solid #b36200;
+    border-bottom: 0.5px solid #b36200;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 1), 0 3px 6px rgba(0, 0, 0, 0.7);
+    position: relative;
+}
+
+.card--id {
+    background: #b36200;
+    width: 3.5cm;
+    height: 1.5cm;
+    font-size: 1cm;
+    color: white;
+    position: absolute;
+    border-radius: 30px 0 50px 0px;
+    top: 0;
+    left:0;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.card--image {
+    display:flex;
+    justify-content: center;
+    width: 300px;
+}
+.card--image:hover{
+    transform: scale(1.2);
+}
+
+.card--name {
+    width: 3.5cm;
+    height: 1.5cm;
+    font-size: 1cm;
+    position: absolute;
+    bottom: 0;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: #b36200;
+    text-transform: capitalize;
+}
+
+
+.textBox{
+    display: flex;
+    justify-content: center;
+    padding:40px;
+}
+#userPokeName{
+    font-family: "Calibri";
+    height:40px;
+    font-size:24pt;
+    color:orange;
+    text-align: center;
+}
+#enterButton{
+    font-family: "Calibri";
+    height:40px;
+    font-size:24pt;
+    color:gray;
+    text-align: center;
+}
+
+
+.correctWrong{
+    display: flex;
+    justify-content: center;
+    padding:0px;
+}
+#howManyCorrect{
+    margin-right: 10px;
+    padding:0px;
+}
+
+#howManyWrong{
+    margin-left: 10px;
+    padding:0px;
+}
+
+
+#gallery{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    grid-gap: 1.5rem;
+}
