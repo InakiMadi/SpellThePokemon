@@ -1,7 +1,6 @@
 /* We insert in 'div id="app"' in index.html */
 const html_app: HTMLElement | any = document.getElementById("app");
 const html_app_inner = html_app.innerHTML;
-const maxPokemonID: number = 151;
 
 interface IPokemon {
     id: number;
@@ -40,13 +39,24 @@ const showPokemon = (pokemon: IPokemon): void => {
     html_app.innerHTML = html_app_inner + output;
 }
 
-const newPokemon = async function(): Promise<void>{
-    let randID: number = randomIntFromInterval(0,maxPokemonID);
-    while(pickedUp[randID] == true){
-        randID = randomIntFromInterval(0,maxPokemonID);
+const newPokemon = function(): void{
+    if( !pickedUp.every( function(e){ return e; } ) ){
+        let randID: number = randomIntFromInterval(0,maxPokemonID);
+        while(pickedUp[randID] == true){
+            randID = randomIntFromInterval(0,maxPokemonID);
+        }
+        pickedUp[randID] = true;
+        getPokemon( randID, ourPoke);
     }
-    pickedUp[randID] = true;
-    await getPokemon( randID, ourPoke);
+    else{
+        gameFinished = true;
+        let output: string = `
+          <div class="correct">
+            <i>F I N I S H E D !</i>
+          </div>
+      `;
+        html_app.innerHTML = html_app_inner + output;
+    }
 }
 
 /*
@@ -57,8 +67,14 @@ const userNaming = (ele: HTMLElement): void => {
 }
 */
 
+const maxPokemonID: number = 151;
+let gameFinished: boolean = false;
 let pickedUp: boolean[] = Array(maxPokemonID+1);
 pickedUp.fill(false);
+pickedUp[0] = true;
+let addedGallery: boolean[] = Array(maxPokemonID+1);
+addedGallery.fill(false);
+addedGallery[0] = true;
 let pokes: Array<IPokemon> = [];
 let mistakesPokes: number[] = Array(maxPokemonID+1);
 mistakesPokes.fill(0); 

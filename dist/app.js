@@ -11,7 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 /* We insert in 'div id="app"' in index.html */
 const html_app = document.getElementById("app");
 const html_app_inner = html_app.innerHTML;
-const maxPokemonID = 151;
 /* Random integer in the interval [min,max] */
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -38,14 +37,23 @@ const showPokemon = (pokemon) => {
     html_app.innerHTML = html_app_inner + output;
 };
 const newPokemon = function () {
-    return __awaiter(this, void 0, void 0, function* () {
+    if (!pickedUp.every(function (e) { return e; })) {
         let randID = randomIntFromInterval(0, maxPokemonID);
         while (pickedUp[randID] == true) {
             randID = randomIntFromInterval(0, maxPokemonID);
         }
         pickedUp[randID] = true;
-        yield getPokemon(randID, ourPoke);
-    });
+        getPokemon(randID, ourPoke);
+    }
+    else {
+        gameFinished = true;
+        let output = `
+          <div class="correct">
+            <i>F I N I S H E D !</i>
+          </div>
+      `;
+        html_app.innerHTML = html_app_inner + output;
+    }
 };
 /*
 const userNaming = (ele: HTMLElement): void => {
@@ -54,8 +62,14 @@ const userNaming = (ele: HTMLElement): void => {
     }
 }
 */
+const maxPokemonID = 151;
+let gameFinished = false;
 let pickedUp = Array(maxPokemonID + 1);
 pickedUp.fill(false);
+pickedUp[0] = true;
+let addedGallery = Array(maxPokemonID + 1);
+addedGallery.fill(false);
+addedGallery[0] = true;
 let pokes = [];
 let mistakesPokes = Array(maxPokemonID + 1);
 mistakesPokes.fill(0);

@@ -71,16 +71,19 @@ let showGallery = function (arr) {
     return output;
 };
 let AddToGallery = function () {
-    let newPoke = {
-        id: ourPoke.id,
-        name: ourPoke.name,
-        image: ourPoke.image,
-    };
-    pokes.push(newPoke);
-    pokes.sort(function (a, b) {
-        return (a.id - b.id);
-    });
-    html_gal.innerHTML = showGallery(pokes);
+    if (!addedGallery[ourPoke.id]) {
+        let newPoke = {
+            id: ourPoke.id,
+            name: ourPoke.name,
+            image: ourPoke.image,
+        };
+        pokes.push(newPoke);
+        pokes.sort(function (a, b) {
+            return (a.id - b.id);
+        });
+        addedGallery[newPoke.id] = true;
+        html_gal.innerHTML = showGallery(pokes);
+    }
 };
 let HintDisplay = function (origMessage) {
     let result = "";
@@ -155,7 +158,16 @@ let CheckUserNaming = function () {
 };
 let KeyPressed = function (e) {
     if (e.key == "Enter") {
-        CheckUserNaming();
+        if (!gameFinished)
+            CheckUserNaming();
+        else {
+            let output = `
+                <div class="correct">
+                 Game is over. Thank you for playing! (Refresh to restart!)
+                </div>
+            `;
+            html_enter.innerHTML = html_enter_inner + output;
+        }
     }
 };
 let hint = "";

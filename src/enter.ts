@@ -74,18 +74,21 @@ let showGallery = function(arr: IPokemon[]): string{
     return output;
 }
 let AddToGallery = function(): void{
-    let newPoke: IPokemon = {
-        id: ourPoke.id,
-        name: ourPoke.name,
-        image: ourPoke.image,
-    };
-    pokes.push(newPoke);
-    pokes.sort( 
-                function(a: IPokemon, b: IPokemon): number{
-                    return (a.id - b.id);
-                } 
-    );
-    html_gal.innerHTML = showGallery(pokes);
+    if(!addedGallery[ourPoke.id]){
+        let newPoke: IPokemon = {
+            id: ourPoke.id,
+            name: ourPoke.name,
+            image: ourPoke.image,
+        };
+        pokes.push(newPoke);
+        pokes.sort( 
+                    function(a: IPokemon, b: IPokemon): number{
+                        return (a.id - b.id);
+                    } 
+        );
+        addedGallery[newPoke.id] = true;
+        html_gal.innerHTML = showGallery(pokes);
+    }
 }
 
 
@@ -171,7 +174,16 @@ let CheckUserNaming = function(): void{
 
 let KeyPressed = function(e:KeyboardEvent): void{
     if(e.key == "Enter"){
-        CheckUserNaming();
+        if(!gameFinished)
+            CheckUserNaming();
+        else{
+            let output = `
+                <div class="correct">
+                 Game is over. Thank you for playing! (Refresh to restart!)
+                </div>
+            `;
+            html_enter.innerHTML = html_enter_inner + output;
+        }
     }
 }
 
