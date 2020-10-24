@@ -65,22 +65,18 @@ const requestListener = function (req, res) {
         case cssName:
             res.writeHead(200, {"Content-Type": "text/css"});
             res.end(cssFile);
-            console.log("CSSSSS");
             break;
         case appName:
             res.writeHead(200, {"Content-Type": "application/javascript"});
             res.end(appFile);
-            console.log("appppppp");
             break;
         case enterName:
             res.writeHead(200, {"Content-Type": "application/javascript"});
             res.end(enterFile);
-            console.log("enterrrrr");
             break;
         default:
             res.writeHead(200, {"Content-Type": "text/html"});
             res.end(indexFile);
-            console.log("HHHHH");
     }
 };
 
